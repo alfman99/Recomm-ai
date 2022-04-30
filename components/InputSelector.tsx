@@ -3,25 +3,20 @@ import { useState } from 'react'
 import Photo from './Photo'
 import { ChevronsLeft }  from 'tabler-icons-react'
 import { useRouter } from "next/router";
+import Link from 'next/link';
 
 
 const InputSelector = () => {
 
-  const router = useRouter();
-
   const [option, setOption] = useState<string>('');
-
+  const [url, setUrl] = useState<string>('');
   const [imageState, setImageState] = useState<boolean>(false); // True when file is selected
 
   const handleProcessImage = () => {
     
     if (!imageState) {
-      console.log('no')
       return;
     }
-
-    console.log('recomendations')
-    router.push('../recommend/processed')
 
   }
 
@@ -33,15 +28,14 @@ const InputSelector = () => {
             <Center style={{width: '6vh'}}>
               <Button leftIcon={<ChevronsLeft/>} onClick={() => setOption('') }> Back</Button>
             </Center>
-              <Center style={{ height: '75vh' }}>              
-              <Input
-       type="file" accept="image/*" onChange={() => setImageState(true)}
-    />
-              </Center>
-              <Center style={{ height: '25vh', gap: '1em' }}>
-                <Button size='xl' onClick={() => handleProcessImage()}>Upload</Button>
-              </Center>
-
+            <Center style={{ height: '75vh' }}>              
+              <input type="text" style={{ color: 'black' }} value={url} onChange={(e) => setUrl(e.target.value)} />
+            </Center>
+            <Center style={{ height: '25vh', gap: '1em' }}>
+              <Link href={{ pathname: '/recommend/processed', query: { img_url: url } }} passHref={true}>
+                <Button size='xl'>Upload</Button>
+              </Link>
+            </Center>
           </>
         )
       }

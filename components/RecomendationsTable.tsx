@@ -5,6 +5,8 @@ import { RecRowProp } from "./RecomendationsRow";
 const Taula = (props:any) => {
     const elements:  RecRowProp[] | null = props.data ;
 
+    console.log(elements)
+
     return (
         <Table>
             <thead>
@@ -15,9 +17,9 @@ const Taula = (props:any) => {
             </tr>       
             </thead>
             <tbody>
-              {elements && elements.map((element, index) => {
+              {/*elements != null && elements.map((element, index) => {
                 return <RecRow key={index} {...element}/>
-              })}
+              })*/}
             </tbody>
         </Table>
     )

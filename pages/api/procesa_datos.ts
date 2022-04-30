@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const response = await fetch(`${base_url}?image_url=${image_url}`)
   const jsonResponse = await response.json()
   
-  if (jsonResponse.error == 'true') {
+  if (jsonResponse.error == 'true' || jsonResponse.solutions == undefined) {
     return res.status(500).json(jsonResponse)
   }
 

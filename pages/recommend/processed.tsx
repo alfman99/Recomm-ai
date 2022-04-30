@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import ImageFrame from '../../components/ImageFrame'
 import Taula from '../../components/RecomendationsTable'
@@ -7,14 +8,19 @@ const image_url = "https://i.imgur.com/sC36WMV.png"
 
 const Home: NextPage = () => {
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const route = useRouter()
+
+  const { img_url } = route.query
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [imageData, setImageData] = useState<any>(null); 
 
    useEffect(() => {
+
     // declare the data fetching function
     const fetchData = async () => {
-      const data = await fetch(`/api/procesa_datos?image_url=${image_url}`);
-      const json = await data.json()
+      const data = await fetch(`/api/procesa_datos?image_url=${img_url}`);
+      const json = await data.json();
       setImageData(json)
       setIsLoading(false)
     }
@@ -33,7 +39,7 @@ const Home: NextPage = () => {
       ) : (
         <>
           <ImageFrame image_url={image_url}/>
-          <Taula data={imageData}/>
+          {imageData != null ? <Taula data={imageData}/> : null}
         </>
       )}
     </>

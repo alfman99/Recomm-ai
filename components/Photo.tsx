@@ -13,7 +13,6 @@ const Photo = () => {
   const capture = useCallback(
     () => {
       const imageSrc = webcamRef.current.getScreenshot();
-      console.log(imageSrc);
     },
     [webcamRef]
   );
