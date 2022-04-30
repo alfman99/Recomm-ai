@@ -1,4 +1,4 @@
-import { Button } from '@mantine/core'
+import { Button, Center } from '@mantine/core'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { ChangeEvent, useEffect, useState } from 'react'
@@ -28,10 +28,17 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <h1>Recomm-ai</h1>
-      <Link href={'recommend'} passHref={true} >
-        <Button>Recommend me!</Button>
-      </Link>
+    <div style={{ display: 'flex', bottom: '5em', flexDirection: 'column', alignItems: 'center', placeContent: 'center', height: '100vh', alignContent: 'center', justifyContent: 'space-around' }}>
+      <Center>
+        <h1>Recomm-ai</h1>
+      </Center>
+      
+      <Center>
+        <Link href={'/recommend'} passHref={true} >
+          <Button className='pulse-button'>Recommend me!</Button>
+        </Link>
+      </Center>
+    </div>
     </>
   )
 }

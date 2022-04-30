@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         primaryColor: 'green',
       }}
     >
-      <Container>
+      <Container style={{ backgroundImage: 'url("http://localhost:3000/background.svg")', backgroundSize: 'cover' }}>
         <Component {...pageProps} />
       </Container>
     </MantineProvider>

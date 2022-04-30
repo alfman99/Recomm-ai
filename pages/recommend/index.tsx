@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import InputSelector from '../../components/InputSelector'
 
-const Home: NextPage = () => {
+const Recommend: NextPage = () => {
 
   return (
     <>
@@ -10,4 +10,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Recommend
