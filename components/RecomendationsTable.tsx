@@ -3,7 +3,7 @@ import RecRow from "./RecomendationsRow"
 import { RecRowProp } from "./RecomendationsRow";
 
 const Taula = (props:any) => {
-    const elements:  RecRowProp[] = props.data ;
+    const elements:  RecRowProp[] | null = props.data ;
 
     return (
         <Table striped highlightOnHover>

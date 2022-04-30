@@ -1,17 +1,19 @@
 
 export interface RecRowProp {
     id:number;
-    image: string;
+    type: string;
     name: string;
     price: number;
+    category:number;
 }
 
-const RecRow = ({ image,name, price} : RecRowProp) => {
+const RecRow = ({id, name, type, price, category} : RecRowProp) => {
     return(
         <tr>
-            <td>{image}</td>
+            <td>{type}</td>
             <td>{name}</td>
             <td>{price}</td>
+            <td>{category}</td>
         </tr>
     )
 } 
