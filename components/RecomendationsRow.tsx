@@ -1,5 +1,6 @@
 
 export interface RecRowProp {
+    id:number;
     image: string;
     name: string;
     price: number;
