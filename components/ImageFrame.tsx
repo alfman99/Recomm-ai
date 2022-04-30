@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { Container, Image } from '@mantine/core';
+import { useEffect, useState } from "react"
+import { Image } from '@mantine/core';
 
-const url_image = "https://www.lovikcocinamoderna.com/wp-content/uploads/2020/04/pack-sorprendente-cocina-laminada-img.jpg"
+const image_url = "https://i.imgur.com/sC36WMV.png"
 
 const ImageFrame = () => {
 
@@ -10,7 +10,7 @@ const ImageFrame = () => {
 
   /*useEffect(() => {
     setIsLoading(true)
-    fetch(`api/fetchTipoHabitacion?image_url=${url_image}`)
+    fetch(`api/fetch_datos?image_url=${image_url}`)
       .then((res) => res.json())
       .then((data) => {
         setImageData(data)
@@ -24,7 +24,7 @@ const ImageFrame = () => {
         <div>Loading...</div>
       ) : (
         <Image
-          src={url_image}
+          src={image_url}
           alt="Panda"/>
       )}
     </div>
