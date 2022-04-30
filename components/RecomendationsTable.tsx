@@ -1,6 +1,7 @@
 import { Table } from "@mantine/core"
 import RecRow from "./RecomendationsRow"
 import { RecRowProp } from "./RecomendationsRow";
+
 const Taula = (props:any) => {
     const elements:  RecRowProp[] = props.data ;
 

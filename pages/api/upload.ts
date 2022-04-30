@@ -1,9 +1,5 @@
-import fs from "fs";
 import { NextApiRequest, NextApiResponse } from "next";
 import formidable from 'formidable'
-import path, { join } from "path";
-import { findDOMNode } from "react-dom";
-import { v4 as uuidv4 } from 'uuid';
 
 const  form = formidable({ multiples:  true });
 
@@ -17,7 +13,7 @@ export default async function handle( req: NextApiRequest, res: NextApiResponse<
   }
 
   var form = new formidable.IncomingForm({ 
-    uploadDir: 'public/casas/',  // don't forget the __dirname here
+    uploadDir: 'public/casas/',
     keepExtensions: true,
     multiples: false
   });

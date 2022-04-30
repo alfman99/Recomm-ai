@@ -1,4 +1,4 @@
-import { Button } from '@mantine/core';
+import { Button, Center } from '@mantine/core';
 import { useState } from 'react'
 import Photo from './Photo'
 
@@ -41,8 +41,10 @@ const InputSelector = () => {
       default: {
         return (
           <>
-            <Button onClick={() => setOption('file')}>File</Button>
-            <Button onClick={() => setOption('camera')}>Webcam</Button>
+            <Center style={{ height: '100vh', gap: '1em' }}>
+              <Button onClick={() => setOption('file')}>File</Button>
+              <Button onClick={() => setOption('camera')}>Webcam</Button>
+            </Center>
           </>
         )
       }

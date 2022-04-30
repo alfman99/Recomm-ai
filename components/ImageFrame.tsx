@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { Image } from '@mantine/core';
 
-
 const ImageFrame = (props: any) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);

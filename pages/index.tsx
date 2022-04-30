@@ -1,4 +1,6 @@
+import { Button } from '@mantine/core'
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { ChangeEvent, useEffect, useState } from 'react'
 
 const Home: NextPage = () => {
@@ -26,8 +28,10 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <input type="file" onChange={e => setImage(e.target.files!['0'])} />
-      <button onClick={(e) => onSubmit(e)}>Upload</button>
+      <h1>Recomm-ai</h1>
+      <Link href={'recommend'} passHref={true} >
+        <Button>Recommend me!</Button>
+      </Link>
     </>
   )
 }
