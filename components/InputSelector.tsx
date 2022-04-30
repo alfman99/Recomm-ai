@@ -2,8 +2,12 @@ import { Button, Center, Input, InputWrapper } from '@mantine/core';
 import { useState } from 'react'
 import Photo from './Photo'
 import { ChevronsLeft }  from 'tabler-icons-react'
+import { useRouter } from "next/router";
+
 
 const InputSelector = () => {
+
+  const router = useRouter();
 
   const [option, setOption] = useState<string>('');
 
@@ -16,7 +20,8 @@ const InputSelector = () => {
       return;
     }
 
-   // console.log('lkfj')
+    console.log('recomendations')
+    router.push('../recommend/processed')
 
   }
 
