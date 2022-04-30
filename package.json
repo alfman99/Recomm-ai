@@ -12,9 +12,14 @@
     "@mantine/core": "^4.2.1",
     "@mantine/hooks": "^4.2.1",
     "@mantine/next": "^4.2.1",
+    "@types/formidable": "^2.0.4",
+    "@types/uuid": "^8.3.4",
+    "formidable": "^2.0.1",
     "next": "12.1.5",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-webcam": "^7.0.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "17.0.30",
