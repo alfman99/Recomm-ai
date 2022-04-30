@@ -1,9 +1,8 @@
 import { Table } from "@mantine/core"
-import RecRow from "./RecomendationsRow"
-import { RecRowProp } from "./RecomendationsRow";
+import RecRow, { RecRowProp } from "./RecomendationsRow";
 
 const Taula = (props:any) => {
-    const elements:  RecRowProp[] | null = props.data ;
+    const elements:  RecRowProp[] = props.data ;
 
     console.log(elements)
 
@@ -17,9 +16,9 @@ const Taula = (props:any) => {
             </tr>       
             </thead>
             <tbody>
-              {/*elements != null && elements.map((element, index) => {
+              {elements != null && elements.map((element, index) => {
                 return <RecRow key={index} {...element}/>
-              })*/}
+              })}
             </tbody>
         </Table>
     )

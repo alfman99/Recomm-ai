@@ -24,12 +24,13 @@ const db = open({
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
 
   const base_url = `${HOST}/api/fetch_datos`
-  const { image_url } = req.query
+  const { image_url: image_url } = req.query
 
   const response = await fetch(`${base_url}?image_url=${image_url}`)
   const jsonResponse = await response.json()
+
   
-  if (jsonResponse.error == 'true' || jsonResponse.solutions == undefined) {
+  if (jsonResponse.error == 'true' && jsonResponse.solutions == undefined) {
     return res.status(500).json(jsonResponse)
   }
 

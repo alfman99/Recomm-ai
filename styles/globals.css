@@ -6,6 +6,8 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   height: 100vh;
   width: 100vw;
+  background-image: url("http://localhost:3000/background.svg");
+  background-size: 'cover';
 }
 
 a {

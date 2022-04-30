@@ -2,7 +2,6 @@ import { Button, Center, Input, InputWrapper } from '@mantine/core';
 import { useState } from 'react'
 import Photo from './Photo'
 import { ChevronsLeft }  from 'tabler-icons-react'
-import { useRouter } from "next/router";
 import Link from 'next/link';
 
 
@@ -32,7 +31,7 @@ const InputSelector = () => {
               <input type="text" style={{ color: 'black' }} value={url} onChange={(e) => setUrl(e.target.value)} />
             </Center>
             <Center style={{ height: '25vh', gap: '1em' }}>
-              <Link href={{ pathname: '/recommend/processed', query: { img_url: url } }} passHref={true}>
+              <Link href={{ pathname: '/recommend/processed', query: { image_url: url } }} passHref={true}>
                 <Button size='xl'>Upload</Button>
               </Link>
             </Center>

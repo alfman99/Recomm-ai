@@ -2,9 +2,12 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Container, MantineProvider } from '@mantine/core'
 
-const { HOST } = process.env
+
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  const { HOST } = process.env
+
   return (
     <MantineProvider
       withGlobalStyles
@@ -15,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         primaryColor: 'green',
       }}
     >
-      <Container style={{ backgroundImage: `url("${HOST}/background.svg")`, backgroundSize: 'cover' }}>
+      <Container>
         <Component {...pageProps} />
       </Container>
     </MantineProvider>
