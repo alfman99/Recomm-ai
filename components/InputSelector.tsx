@@ -1,6 +1,7 @@
-import { Button, Center } from '@mantine/core';
+import { Button, Center, Input, InputWrapper } from '@mantine/core';
 import { useState } from 'react'
 import Photo from './Photo'
+import { ChevronsLeft }  from 'tabler-icons-react'
 
 const InputSelector = () => {
 
@@ -15,7 +16,7 @@ const InputSelector = () => {
       return;
     }
 
-    console.log('image')
+   // console.log('lkfj')
 
   }
 
@@ -24,9 +25,18 @@ const InputSelector = () => {
       case 'file': {
         return (
           <>
-            <Button onClick={() => setOption('')}>Back</Button>
-            <input type="file" accept="image/*" onChange={() => setImageState(true)} />
-            <Button onClick={() => handleProcessImage()}>Upload</Button>
+            <Center style={{width: '6vh'}}>
+              <Button leftIcon={<ChevronsLeft/>} onClick={() => setOption('') }> Back</Button>
+            </Center>
+              <Center style={{ height: '75vh' }}>              
+              <Input
+       type="file" accept="image/*" onChange={() => setImageState(true)}
+    />
+              </Center>
+              <Center style={{ height: '25vh', gap: '1em' }}>
+                <Button size='xl' onClick={() => handleProcessImage()}>Upload</Button>
+              </Center>
+
           </>
         )
       }
