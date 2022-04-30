@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { MantineProvider } from '@mantine/core'
+import { Container, MantineProvider } from '@mantine/core'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         primaryColor: 'green',
       }}
     >
-      <Component {...pageProps} />
+      <Container>
+        <Component {...pageProps} />
+      </Container>
     </MantineProvider>
   )
 
