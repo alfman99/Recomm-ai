@@ -36,4 +36,4 @@ const ImageFrame = (props: any) => {
   )
 }
 
-export default ImageFrame
+export default ImageFrame;
