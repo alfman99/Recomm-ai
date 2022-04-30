@@ -26,21 +26,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const base_url = `${HOST}/api/fetch_datos`
   const { image_url } = req.query
 
-  const promises = []
-
-  promises.push(fetch(`${base_url}?image_url=${image_url}`))
-  promises.push((await db).all('SELECT * FROM appliance'))
-
-  const [response, appliances] = await Promise.all(promises)
-
-  const json = await ((response) as Response).json()
-
-  // put every json on same object
-  const data = {
-    ...json,
-    appliances
+  const response = await fetch(`${base_url}?image_url=${image_url}`)
+  const jsonResponse = await response.json()
+  
+  if (jsonResponse.error == 'true') {
+    return res.status(500).json(jsonResponse)
   }
 
-  res.status(200).json(data);
+  const responseDB = await (await db).all('SELECT *, min(abs(abs(?) - abs(category))) FROM appliance GROUP BY type', jsonResponse.response.solutions.re_condition.score)
+
+  const falta = responseDB.filter(element => {
+    if (jsonResponse.response.solutions.re_appliances_v2.detections.findIndex((item: any) => item.label == element.type) == -1) {
+      return element
+    }
+  })
+
+  return res.status(200).send(falta)
 
 }
+
+/*const getRecommendations = () => {
+
+}*/
