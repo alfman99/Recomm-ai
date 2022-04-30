@@ -1,44 +1,35 @@
 import sqlite3
-'''
-Scores (Gamas)-->
-
-Disrepair (1.0)
-Poor (2.0)
-Average (3.0)
-Good (4.0)
-Excellent (5.0)
-Luxury (6.0)
-
-'''
-
 def category_dishwasher(price):
-    if price <= 249 :
-        return 1.0
-    elif price > 249 and price <= 482 :
-        return 2.0
-    elif price > 482 and price <= 715 :
-        return 3.0
-    elif price > 715 and price <= 948 :
-        return 4.0
-    elif price > 948 and price <= 1181 :
-        return 5.0
-    elif price > 1181 :
-        return 6.0
+    max = 1649
+    return((price*6)/max)
 
 def category_electric_stovetop(price):
-    if price <= 18 :
-        return 1.0
-    elif price > 18 and price <= 78 :
-        return 2.0
-    elif price > 78 and price <= 97 :
-        return 3.0
-    elif price > 97 and price <= 158 :
-        return 4.0
-    elif price > 158 and price <= 219 :
-        return 5.0
-    elif price > 219 and price <= 386 :
-        return 6.0
+    max = 3999
+    return((price*6)/max)
 
+def category_gas_stovetop(price):
+    max = 4049
+    return((price*6)/max)
+
+def category_microwave(price):
+    max = 619
+    return((price*6)/max)
+
+def category_radiator(price):
+    max = 2599
+    return((price*6)/max)
+
+def category_oven(price):
+    max = 3402
+    return((price*6)/max)
+
+def category_refrigerator(price):
+    max = 6744
+    return((price*6)/max)
+
+def category_range_hood(price):
+    max = 749
+    return((price*6)/max)
     
 
 def do_script(c,q):
@@ -50,10 +41,10 @@ cur = con.cursor()
 
 # Create table
 try:
-    cur.execute("CREATE TABLE appliance(id INTEGER PRIMARY KEY AutoIncrement, type TEXT NOT NULL, name TEXT NOT NULL, price INTEGER NOT NULL, category FLOAT NOT NULL);")
+    cur.execute("CREATE TABLE appliance(id INTEGER PRIMARY KEY AutoIncrement, type TEXT NOT NULL, name TEXT NOT NULL, price FLOAT NOT NULL, category FLOAT NOT NULL);")
 except:
     cur.execute("DROP TABLE appliance;")
-    cur.execute("CREATE TABLE appliance(id INTEGER PRIMARY KEY AutoIncrement, type TEXT NOT NULL, name TEXT NOT NULL, price INTEGER NOT NULL, category FLOAT NOT NULL);")
+    cur.execute("CREATE TABLE appliance(id INTEGER PRIMARY KEY AutoIncrement, type TEXT NOT NULL, name TEXT NOT NULL, price FLOAT NOT NULL, category FLOAT NOT NULL);")
 
 
 # appliance: dishwasher
@@ -139,236 +130,180 @@ do_script(cur, lang_list)
 
 # appliance: electric_stovetop
 lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
+    "electric_stovetop",
+    "UNIVERSALBLUE URAM1000-18",
+    44.99,
+    category_electric_stovetop(44.99),
 ]
 do_script(cur, lang_list)
 
 lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
+    "electric_stovetop",
+    "Haverland XTAL4B",
+    386.0,
+    category_electric_stovetop(386.0),
 ]
 do_script(cur, lang_list)
 
 lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-lang_list = [
-    "electric_stovetop",#tipo
-    "", #marca
-    ,#price
-    category(),#category
-]
-do_script(cur, lang_list)
-
-
-
-
-'''
-
-# appliance: electric_stovetop
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-# appliance: elevator
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "electric_stovetop",
+    "Siemens ET475FYB1E",
+    1779,
+    category_electric_stovetop(1779),
 ]
 do_script(cur, lang_list)
 
 # appliance: gas_stovetop
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "gas_stovetop",
+    "OUTSUNNY",
+    359.99, 
+    category_gas_stovetop(300),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "gas_stovetop",
+    "OUTSUNNY",
+    69.99,
+    category_gas_stovetop(69.99),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "gas_stovetop",
+    "Orbegozo H55",
+    123,
+    category_gas_stovetop(123),
 ]
 do_script(cur, lang_list)
 
 # appliance: microwave
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "microwave",
+    "Cecotec ProClean 5120",
+    99.99,
+    category_microwave(99.99),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "microwave",
+    "Taurus Ready",
+    66.99,
+    category_microwave(66.99),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "microwave",
+    "Teka MLC 844",
+    780,
+    category_microwave(780),
 ]
 do_script(cur, lang_list)
 
 # appliance: oven
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "oven", 
+    "Balay 3HB4331X0",
+    299, 
+    category_oven(299),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "oven",
+    "BASTILIPO Pisa",
+    44.95,
+    category_oven(44.95),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "oven",
+    "Smeg A1PY-9",
+    3402,  # price
+    category_oven(3402),  # category
 ]
 do_script(cur, lang_list)
 
 # appliance: radiator
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "radiator",
+    "Supra Orphée 12 FR9010800B",
+    2599,
+    category_radiator(2599),
 ]
 do_script(cur, lang_list)
 
-# appliance: baseboard_radiator
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "radiator",
+    "PURLINE MUSIA",
+    499.95,
+    category_radiator(499.95),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "radiator",
+    "BASTILIPO 2765 ET-EcoFluid-4",
+    195.79,
+    category_radiator(195.79),
+]
+do_script(cur, lang_list)
+
+
+# appliance: refrigerator
+lang_list = [
+    "refrigerator",
+    "SOGO",
+    64.99,
+    category_refrigerator(64.99),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "refrigerator",
+    "LG LSR200B",
+    6744,
+    category_refrigerator(6744),
+]
+do_script(cur, lang_list)
+
+lang_list = [
+    "refrigerator",
+    "Haier F+ Series 9 HFF-750CGBJ",
+    3380,
+    category_refrigerator(3380),
 ]
 do_script(cur, lang_list)
 
 # appliance: range_hood
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "range_hood",
+    "Siemens LZ20JXP00",
+    772.50,
+    category_range_hood(772.50),
 ]
 do_script(cur, lang_list)
 
-# appliance: range_oven
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "range_hood",
+    "SCHNEIDER SCHB98EX",
+    264.90,
+    category_range_hood(264.90),
 ]
 do_script(cur, lang_list)
 
-# appliance: gas_range_oven
 lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
+    "range_hood",
+    "SCHNEIDER SCHC6018WH",
+    74.90,
+    category_range_hood(74.90),
 ]
 do_script(cur, lang_list)
 
-# appliance: electric_range_oven
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-# appliance: refrigerator
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-# appliance: tv
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-
-# appliance: wall_mounted_ac
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-# appliance: washer__dryer
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-# appliance: water_heater
-lang_list = [
-    "micro",#tipo
-    "LG", #marca
-    300,#price
-    category(300),#category
-]
-do_script(cur, lang_list)
-
-'''
 # Save (commit) the changes
 con.commit()
 
