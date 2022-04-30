@@ -1,16 +1,46 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const { HOST } = process.env;
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
+
+
+export interface Appliance {
+  id: number,
+  type: string,
+  name: string,
+  price: number,
+  category: number
+}
+
+const { HOST } = process.env
+
+// Database
+const db = open({
+  filename: 'script/recomm-ai.db',
+  driver: sqlite3.Database
+})
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
 
+  const base_url = `${HOST}/api/fetch_datos`
   const { image_url } = req.query
 
-  const base_url = `${HOST}/api/fetch_datos?image_url=${image_url}`
-  const response = await fetch(base_url)
-  const json = await response.json()
+  const promises = []
 
-  res.status(200).json(json);
+  promises.push(fetch(`${base_url}?image_url=${image_url}`))
+  promises.push((await db).all('SELECT * FROM appliance'))
+
+  const [response, appliances] = await Promise.all(promises)
+
+  const json = await ((response) as Response).json()
+
+  // put every json on same object
+  const data = {
+    ...json,
+    appliances
+  }
+
+  res.status(200).json(data);
 
 }
