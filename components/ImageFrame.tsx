@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { Image } from '@mantine/core';
 
-const image_url = "https://i.imgur.com/sC36WMV.png"
 
-const ImageFrame = () => {
+const ImageFrame = (props: any) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageData, setImageData] = useState<any>(null); 
+
+  useEffect(() => {
+    console.log(props.image_url, imageData)
+    
+  }, [imageData])
 
   /*useEffect(() => {
     setIsLoading(true)
@@ -23,9 +27,11 @@ const ImageFrame = () => {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <Image
-          src={image_url}
-          alt="Panda"/>
+        <div>
+          <Image
+            src={props.image_url}
+            alt="Panda"/>
+        </div>
       )}
     </div>
   )
