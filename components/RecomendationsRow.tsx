@@ -12,8 +12,7 @@ const RecRow = ({id, name, type, price, category} : RecRowProp) => {
         <tr>
             <td>{type}</td>
             <td>{name}</td>
-            <td>{price}</td>
-            <td>{category}</td>
+            <td>{price} €</td>
         </tr>
     )
 } 

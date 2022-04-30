@@ -10,19 +10,32 @@ const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imageData, setImageData] = useState<any>(null); 
 
-  useEffect(() => {
-    setIsLoading(true)
-    fetch(`api/procesa_datos?image_url=${image_url}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setImageData(data)
-        setIsLoading(false)
-      })
+   useEffect(() => {
+    // declare the data fetching function
+    const fetchData = async () => {
+      const data = await fetch(`/api/procesa_datos?image_url=${image_url}`);
+      const json = await data.json()
+      setImageData(json)
+      setIsLoading(false)
+    }
+
+    fetchData()
+    .catch(e => {
+      console.error(e)
+    })
+
   }, [])
+
   return (
     <>
-      <ImageFrame/>
-      <Taula data={imageData}/>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <ImageFrame image_url={image_url}/>
+          <Taula data={imageData}/>
+        </>
+      )}
     </>
   )
   

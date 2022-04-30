@@ -6,18 +6,18 @@ const Taula = (props:any) => {
     const elements:  RecRowProp[] | null = props.data ;
 
     return (
-        <Table striped highlightOnHover>
+        <Table>
             <thead>
             <tr>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Price[€]</th>                    
+                <th>Price</th>                    
             </tr>       
             </thead>
             <tbody>
-            {elements && elements.map((element, index) => {
-            return <RecRow  key={index} {...element}/>
-            })}
+              {elements && elements.map((element, index) => {
+                return <RecRow key={index} {...element}/>
+              })}
             </tbody>
         </Table>
     )
