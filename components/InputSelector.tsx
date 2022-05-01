@@ -11,14 +11,6 @@ const InputSelector = () => {
   const [url, setUrl] = useState<string>('');
   const [imageState, setImageState] = useState<boolean>(false); // True when file is selected
 
-  const handleProcessImage = () => {
-    
-    if (!imageState) {
-      return;
-    }
-
-  }
-
   const inputType = () => {
     switch (option) {
       case 'file': {
@@ -28,7 +20,7 @@ const InputSelector = () => {
               <Button leftIcon={<ChevronsLeft/>} onClick={() => setOption('') }> Back</Button>
             </Center>
             <Center style={{ height: '75vh' }}>              
-              <input type="text" style={{ color: 'black' }} value={url} onChange={(e) => setUrl(e.target.value)} />
+              <input placeholder={'Input image of your kitchen'} type="text" style={{ color: 'black' }} value={url} onChange={(e) => setUrl(e.target.value)} />
             </Center>
             <Center style={{ height: '25vh', gap: '1em' }}>
               <Link href={{ pathname: '/recommend/processed', query: { image_url: url } }} passHref={true}>
