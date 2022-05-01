@@ -42,7 +42,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
   })
 
-  return res.status(200).send(falta)
+  const responseDBSuggestions = await (await db).all('SELECT *, min(abs(abs(?) - abs(category))) FROM appliance GROUP BY type', jsonResponse.response.solutions.re_condition.score + 2)
+
+  const suggestionsMejora = responseDBSuggestions.filter(element => {
+    if (jsonResponse.response.solutions.re_appliances_v2.detections.findIndex((item: any) => item.label == element.type) != -1) {
+      return element
+    }
+  })
+
+  const data = {
+    falta,
+    suggestionsMejora
+  }
+
+  return res.status(200).send(data)
 
 }
 
