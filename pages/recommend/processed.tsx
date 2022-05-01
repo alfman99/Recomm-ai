@@ -1,3 +1,4 @@
+import { Tabs } from '@mantine/core'
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
@@ -10,6 +11,7 @@ const Processed: NextPage = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [imageData, setImageData] = useState<any>(null);
+  const [impData, setImpData] = useState<any>(null);
 
   const image_url = 'https://i.imgur.com/JynJP5l.png'
 
@@ -28,8 +30,6 @@ const Processed: NextPage = () => {
     cositas();
   }, [])
 
-  
-
   return (
     <>
     {console.log("cosas", imageData)}
@@ -38,7 +38,12 @@ const Processed: NextPage = () => {
       ) : (
         <>
           <ImageFrame image_url={image_url}/>
-          {imageData != null ? <Taula data={imageData}/> : null}
+          <Tabs  variant="pills" orientation='horizontal'>
+            <Tabs.Tab label="Mising"> {imageData != null ? <Taula data={imageData}/> : null} </Tabs.Tab>
+            <Tabs.Tab label="Improvements"> {imageData != null ? <Taula data={imageData}/> : null} </Tabs.Tab>
+
+          </Tabs>
+          
         </>
       )}
     </>
