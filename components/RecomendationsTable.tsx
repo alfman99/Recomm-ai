@@ -10,7 +10,7 @@ const Taula = (props:any) => {
         <Table>
             <thead>
             <tr>
-                <th>Image</th>
+                <th>Type</th>
                 <th>Name</th>
                 <th>Price</th>                    
             </tr>       
